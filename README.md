@@ -2,14 +2,7 @@
 
 ## 📌 Project Overview
 
-This project focuses on analyzing Amazon website traffic data to understand
-traffic patterns, user behavior, engagement, and conversion performance.
-
-The project uses Python for data cleaning and exploratory analysis,
-SQL for data analysis, and Power BI for interactive dashboard development
-and business insights.
-
----
+This project analyzes Amazon website traffic data to understand traffic patterns, user behavior, engagement, and conversion performance. Python is used for data cleaning and exploratory analysis, SQL for business analysis, and Power BI for interactive dashboard development.
 
 ## 🎯 Business Objectives
 
@@ -23,142 +16,96 @@ and business insights.
 - Understand traffic patterns by hour and day of week
 - Track website traffic trends over time
 
----
-
 ## 🛠️ Tools & Technologies
 
-- 🐍 Python
-- 🗄️ SQL
-- 📊 Power BI
-- 📐 DAX
-- 🧹 Data Cleaning
-- 📈 Data Visualization
-- 💡 Business Analysis
+| Tool | Purpose |
+|---|---|
+| 🗄️ SQL (MySQL) | Data querying and business analysis |
+| 🐍 Python | Data cleaning and exploratory analysis |
+| 🐼 Pandas / NumPy | Data manipulation |
+| 📈 Matplotlib / Seaborn | Data visualization |
+| 📊 Power BI + DAX | Dashboard development |
+| 📑 Jupyter Notebook | Interactive analysis |
 
----
+## 📂 Dataset Information
 
-## 📂 Dataset
-
-The project uses an Amazon Web Traffic dataset containing information
-related to website visits, traffic sources, users, page views,
-conversions, device categories, countries, pages, and engagement metrics.
+**Source:** Synthetic dataset (42,815 sessions) generated to mirror the structure of a typical website traffic dataset. Generation logic: [`python/generate_data.py`](python/generate_data.py) — fully reproducible.
 
 ### Key Columns
-
-- Country
-- Timestamp
-- Device Category
-- Source
-- Page Path
-- Avg Session Duration
-- Bounce Rate
-- Conversions
-- New Users
-- Returning Users
-- Page Views
-- Unique Page Views
-
----
+Session ID, Timestamp, Country, Device Category, Source, Page Path, Avg Session Duration, Bounce Rate, Conversions, New/Returning User, Page Views, Unique Page Views.
 
 ## 🔄 Project Workflow
 
 ### 1. Data Cleaning
-- Cleaned raw website traffic data
-- Handled data types
-- Prepared date and timestamp fields
-- Prepared data for analysis
+- Standardized inconsistent traffic-source text (casing/whitespace)
+- Parsed timestamps, filled missing bounce rate / session duration / device category
+- Removed duplicates
+- Full code: [`python/amazon_traffic_eda.ipynb`](python/amazon_traffic_eda.ipynb)
 
 ### 2. SQL Analysis
-Performed SQL-based analysis to identify:
-- Traffic source performance
-- Conversion performance
-- User behavior
-- Country-level traffic
-- Page-level performance
+Full query set: [`sql/web_traffic_analysis.sql`](sql/web_traffic_analysis.sql), including:
+- Traffic source performance (window functions for % share)
+- New vs returning user conversion comparison
+- Device-level bounce rate
+- Top 10 countries and pages (`RANK()`)
+- Hour-of-day and day-of-week traffic patterns
+- Monthly traffic trend with month-over-month growth (`LAG`)
+- High-bounce / low-conversion source targeting (CTE)
 
-### 3. Python Analysis
-Used Python for:
-- Exploratory Data Analysis
-- Data validation
-- Trend analysis
-- Statistical summaries
-- Visualization
+### 3. Python EDA
+Full notebook: [`python/amazon_traffic_eda.ipynb`](python/amazon_traffic_eda.ipynb)
 
 ### 4. Power BI Dashboard
-Built an interactive dashboard containing:
-
-- Total Page Views
-- Total Conversions
-- Conversion Rate
-- New Users
-- Returning Users
-- Average Bounce Rate
-- Monthly Traffic Trend
-- Traffic by Source
-- Traffic by Device
-- Conversions by Traffic Source
-- Bounce Rate by Source
-- Average Session Duration
-- Top 10 Countries
-- Top 10 Pages
-- Traffic by Hour
-- Traffic by Day of Week
-
----
-
-## 📊 Dashboard Highlights
-
-The Power BI dashboard provides an interactive view of:
-
-- 📈 Website traffic trends
-- 🎯 Conversion performance
-- 👥 User behavior
-- 📱 Device-level traffic
-- 🌍 Geographic performance
-- 🔎 Traffic source analysis
-- 📄 Page performance
-- ⏰ Time-based traffic patterns
-
----
-
-## 💡 Key Insights
-
-- Identified the strongest traffic acquisition sources.
-- Compared conversion performance across traffic channels.
-- Analyzed mobile, desktop, and tablet traffic contribution.
-- Identified sources with relatively high bounce rates.
-- Analyzed the most visited countries and website pages.
-- Identified peak traffic hours and high-performing days.
-
----
-
-## 📌 Business Recommendations
-
-- Focus marketing efforts on high-performing traffic sources.
-- Optimize high-bounce-rate channels and landing pages.
-- Improve the mobile website experience if mobile traffic is significant.
-- Prioritize high-traffic pages for conversion optimization.
-- Use peak traffic periods for targeted campaigns.
-
----
+Interactive dashboard (`Amazon Website Traffic Analysis.pbix`) with KPIs (Total Page Views, Conversions, Conversion Rate, New/Returning Users, Avg Bounce Rate), plus charts for traffic by source/device/country/page and time-based patterns.
 
 ## 📸 Dashboard Preview
 
-![Amazon Web Traffic Dashboard](screenshots/dashboard.png)
+![Dashboard](Amazon%20Website%20Traffic%20Analysis.png)
 
----
+## 💡 Key Insights
 
-## 🚀 Project Outcome
+- **Organic Search** drives the largest share of traffic (~32%), but **Email** and **Direct** traffic convert at the highest rates
+- **Social** traffic is high-volume but has the lowest conversion rate — a landing-page/targeting optimization opportunity
+- **Mobile** has the highest bounce rate of all device categories
 
-This project demonstrates an end-to-end data analytics workflow,
-from data cleaning and exploratory analysis to SQL analysis,
-DAX calculations, interactive Power BI visualization, and
-business-oriented insights.
+![Traffic by Source](screenshots/traffic_by_source.png)
+![Conversion Rate by Source](screenshots/conversion_by_source.png)
+![Bounce Rate by Device](screenshots/bounce_rate_by_device.png)
 
----
+## 📌 Business Recommendations
 
-## 👨‍💻 Author
+- Focus marketing efforts on high-converting channels (Email, Direct) while optimizing Social campaigns
+- Prioritize mobile UX improvements to reduce bounce rate
+- Use peak traffic hours/days for targeted campaigns
+- Prioritize high-traffic pages for conversion-rate optimization
 
-**Yeshwanth**
+## 📁 Project Structure
 
-Aspiring Data Analyst | Python | SQL | Power BI | Excel
+```
+proj4_amazon_traffic/
+├── data/
+│   └── amazon_traffic_raw.csv
+├── sql/
+│   └── web_traffic_analysis.sql
+├── python/
+│   ├── generate_data.py
+│   ├── amazon_traffic_eda.ipynb
+│   └── save_screenshots.py
+├── screenshots/
+├── requirements.txt
+└── README.md
+```
+
+## 🚀 Skills Demonstrated
+
+SQL querying (window functions, CTEs, ranking) · data cleaning · exploratory data analysis · dashboard development (Power BI + DAX) · web-traffic/conversion analysis · business storytelling
+
+## 🔮 Future Improvements
+
+- Funnel analysis (landing → cart → checkout drop-off)
+- A/B testing framework for landing page variants
+- Predictive model for session-level conversion likelihood
+
+## 👨‍💻 Yeshwanth Mocherla
+
+**Yeshwanth Mocherla** — Aspiring Data Analyst | SQL | Python | Power BI
