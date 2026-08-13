@@ -29,7 +29,7 @@ This project analyzes Amazon website traffic data to understand traffic patterns
 
 ## 📂 Dataset Information
 
-**Source:** Synthetic dataset (42,815 sessions) generated to mirror the structure of a typical website traffic dataset. Generation logic: [`python/generate_data.py`](python/generate_data.py) — fully reproducible.
+**Source:** Synthetic dataset (42,815 sessions) generated to mirror the structure of a typical website traffic dataset. Generation logic: [`generate_data.py`](generate_data.py) — fully reproducible.
 
 ### Key Columns
 Session ID, Timestamp, Country, Device Category, Source, Page Path, Avg Session Duration, Bounce Rate, Conversions, New/Returning User, Page Views, Unique Page Views.
@@ -40,10 +40,10 @@ Session ID, Timestamp, Country, Device Category, Source, Page Path, Avg Session 
 - Standardized inconsistent traffic-source text (casing/whitespace)
 - Parsed timestamps, filled missing bounce rate / session duration / device category
 - Removed duplicates
-- Full code: [`python/amazon_traffic_eda.ipynb`](python/amazon_traffic_eda.ipynb)
+- Full code: [`amazon_traffic_eda.ipynb`](amazon_traffic_eda.ipynb)
 
 ### 2. SQL Analysis
-Full query set: [`sql/web_traffic_analysis.sql`](sql/web_traffic_analysis.sql), including:
+Full query set: [`web_traffic_analysis.sql`](web_traffic_analysis.sql), including:
 - Traffic source performance (window functions for % share)
 - New vs returning user conversion comparison
 - Device-level bounce rate
@@ -53,7 +53,7 @@ Full query set: [`sql/web_traffic_analysis.sql`](sql/web_traffic_analysis.sql), 
 - High-bounce / low-conversion source targeting (CTE)
 
 ### 3. Python EDA
-Full notebook: [`python/amazon_traffic_eda.ipynb`](python/amazon_traffic_eda.ipynb)
+Full notebook: [`amazon_traffic_eda.ipynb`](amazon_traffic_eda.ipynb)
 
 ### 4. Power BI Dashboard
 Interactive dashboard (`Amazon Website Traffic Analysis.pbix`) with KPIs (Total Page Views, Conversions, Conversion Rate, New/Returning Users, Avg Bounce Rate), plus charts for traffic by source/device/country/page and time-based patterns.
