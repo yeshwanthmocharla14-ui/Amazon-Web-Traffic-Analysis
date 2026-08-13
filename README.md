@@ -68,9 +68,9 @@ Interactive dashboard (`Amazon Website Traffic Analysis.pbix`) with KPIs (Total 
 - **Social** traffic is high-volume but has the lowest conversion rate — a landing-page/targeting optimization opportunity
 - **Mobile** has the highest bounce rate of all device categories
 
-![Traffic by Source](screenshots/traffic_by_source.png)
-![Conversion Rate by Source](screenshots/conversion_by_source.png)
-![Bounce Rate by Device](screenshots/bounce_rate_by_device.png)
+![Traffic by Source](traffic_by_source.png)
+![Conversion Rate by Source](conversion_by_source.png)
+![Bounce Rate by Device](bounce_rate_by_device.png)
 
 ## 📌 Business Recommendations
 
