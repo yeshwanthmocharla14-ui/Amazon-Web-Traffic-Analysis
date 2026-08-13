@@ -106,6 +106,6 @@ SQL querying (window functions, CTEs, ranking) · data cleaning · exploratory d
 - A/B testing framework for landing page variants
 - Predictive model for session-level conversion likelihood
 
-## 👨‍💻 Yeshwanth Mocherla
+## 👨‍💻 Author
 
 **Yeshwanth Mocherla** — Aspiring Data Analyst | SQL | Python | Power BI
